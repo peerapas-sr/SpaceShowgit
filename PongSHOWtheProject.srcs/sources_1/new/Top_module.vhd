@@ -41,12 +41,14 @@ begin
             video_on  => w_video_on,
             rgb_in    => w_rgb_in
         );
+    -- 2. Instantiate the Pixel Generator
+    PIXEL_GEN: entity work.pixel_generator
+        port map (
+            video_on => w_video_on,
+            pixel_x  => w_pixel_x,
+            pixel_y  => w_pixel_y,
+            rgb_out  => w_rgb_in
+        );
 
-    -- 2. Simple Test Pattern Logic (Game Logic goes here later)
-    -- Display entire screen in blue
-    process(w_pixel_x, w_pixel_y)
-    begin
-        w_rgb_in <= x"00F"; -- Blue for entire screen
-    end process;
 
 end Behavioral;
